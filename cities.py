@@ -10,8 +10,8 @@ class Person(models.Model):
  
 
 # Вывести список людей и городов где они живут?
-for item in Person.objects.select_related('city').all().values('name', 'city__name'):
-    print(f'{item["name"]} from {item["city__name"]}')
+for item in Person.objects.select_related('city').all():
+    print(f'{item.name} from {item.city.name}')
 
 # Вывести всех людей, живущих в городе N
 for item in Person.objects.filter(city__name=N).values():
